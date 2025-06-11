@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registratieformulier Opnieuw Versturen - Instructie & Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background: #f5f6fa;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #007bff;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        
+        .section-title-alt { /* Voor sub-secties */
+            font-size: 1.8em;
+            color: #0069d9; 
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #0069d9;
+            padding-left: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #0056b3;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        h3::before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: #495057;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        p, li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        ul {
+            margin: 15px 0 15px 25px;
+        }
+        
+        ul.fields-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #007bff;
+            background-color: #f8f9fa;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 4px;
+        }
+        ul.fields-list strong {
+            color: #0056b3;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .concept-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-left: 5px solid #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .concept-box h4 {
+            color: #0056b3;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .concept-box h4::before {
+            content: "💡";
+            margin-right: 8px;
+        }
+
+        .step-container {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 5px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning-box strong {
+             color: #856404;
+        }
+        
+        .warning-box ul {
+            margin-top:10px;
+            margin-bottom: 0;
+        }
+
+        .warning-box::before {
+            content: "⚠️ ";
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .info-box {
+            background: #e2f3ff;
+            border: 1px solid #b8dfff;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .info-box strong {
+            color: #004085;
+        }
+        .info-box::before {
+            content: "ℹ️ ";
+            font-weight: bold;
+            color: #004085;
+        }
+
+        .screenshot-placeholder {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .screenshot-placeholder img {
+            max-width: 100%;
+            max-height: 500px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+        }
+
+        .screenshot-placeholder::before {
+            content: "📷";
+            font-size: 2rem;
+            opacity: 0.2;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .screenshot-placeholder:has(img)::before {
+            display: none;
+        }
+
+        .screenshot-description {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            z-index: 2;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .quiz {
+            display: none;
+        }
+
+        .quiz.active {
+            display: block;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin: 8px 0;
+            padding: 15px 20px;
+            font-size: 1.05em;
+            color: white;
+            background: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        }
+
+        .options button:hover {
+            transform: translateY(-2px) translateX(2px);
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
+        }
+
+        .options button.correct {
+            background: #28a745 !important;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .options button.wrong {
+            background: #dc3545 !important;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        .options button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .feedback {
+            font-size: 2em;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .feedback.good {
+            color: #28a745;
+        }
+
+        .feedback.wrong {
+            color: #dc3545;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .navigation button {
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 10px;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .navigation button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .results-section {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .results-section p {
+            font-size: 1.8em;
+            margin: 20px 0;
+            color: #495057;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+        <header>
+            <h1>Registratieformulier opnieuw versturen</h1>
+            <p>📚 Instructiegids: Webformulieren beheren</p>
+        </header>
+
+    <!-- Instructie Sectie -->
+    <section class="instruction-section">
+        <h2 class="section-title-alt">🔄 Stappen voor het opnieuw versturen van een registratieformulier</h2>
+        
+        <div class="concept-box">
+            <h4>Waarom formulieren opnieuw versturen?</h4>
+            <p>Het kan voorkomen dat een kandidaat het registratieformulier niet heeft ontvangen of kwijt is geraakt. Door het formulier opnieuw te versturen, zorg je ervoor dat:
+                <ul>
+                    <li>De kandidaat het formulier alsnog kan invullen</li>
+                    <li>Het registratieproces kan worden voortgezet</li>
+                    <li>Er geen vertraging ontstaat in de werving</li>
+                    <li>De communicatie met de kandidaat optimaal verloopt</li>
+                </ul>
+            Het systeem houdt bij wanneer formulieren zijn verzonden en opnieuw verzonden.
+            </p>
+        </div>
+
+        <h2 class="section-title-alt">👤 Stap 1: Open het profiel van de kandidaat</h2>
+
+        <div class="step-container">
+            <div class="step-number">1</div>
+            <h3>Inloggen en navigeren</h3>
+            <h4>🎯 Doel</h4>
+            <p>Toegang krijgen tot het systeem en het juiste kandidaatprofiel vinden.</p>
+            
+            <h4>📝 Acties</h4>
+            <ul>
+                <li>Log in op het systeem met je gegevens.</li>
+                <li>Navigeer naar het profiel van de betreffende kandidaat via de zoekbalk bovenaan de pagina of via het kandidatenoverzicht.</li>
+            </ul>
+        </div>
+
+        <div class="step-container">
+            <div class="step-number">2</div>
+            <h3>Profiel verificatie</h3>
+            <h4>🎯 Doel</h4>
+            <p>Controleren of je in het juiste kandidaatprofiel bent.</p>
+            
+            <h4>📝 Acties</h4>
+            <ul>
+                <li>Controleer of je in het juiste profiel zit door de status van de kandidaat te bekijken (bijvoorbeeld <span class="highlight">Sollicitant</span>) die bovenin het profiel wordt weergegeven.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title-alt">⚙️ Stap 2: Open het menu met webformulieren</h2>
+
+        <div class="step-container">
+            <div class="step-number">1</div>
+            <h3>Toegang tot webformulieren</h3>
+            <h4>🎯 Doel</h4>
+            <p>Het menu openen waar alle webformulieren van de kandidaat beheerd kunnen worden.</p>
+            
+            <h4>📝 Acties</h4>
+            <ul>
+                <li>In de rechterbovenhoek van het scherm, naast de kop <span class="highlight">Sollicitant Profiel</span>, klik je op het <span class="highlight">tandwielicoon (⚙️)</span>.</li>
+                <li>Er verschijnt een dropdownmenu. Klik op <span class="highlight">Web Formulieren</span> om door te gaan.</li>
+            </ul>
+            
+            <div class="screenshot-placeholder">
+                <img src="Voorbeelden/WebFormulieren menu.png" alt="WebFormulieren menu">
+                <div class="screenshot-description">
+                    Het tandwielicoon in de rechterbovenhoek met het dropdownmenu waarin 'Web Formulieren' zichtbaar is.
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title-alt">📋 Stap 3: Selecteer het registratieformulier</h2>
+
+        <div class="step-container">
+            <div class="step-number">1</div>
+            <h3>Formulier lokaliseren</h3>
+            <h4>🎯 Doel</h4>
+            <p>Het juiste formulier vinden in het overzicht van alle webformulieren.</p>
+            
+            <h4>📝 Acties</h4>
+            <ul>
+                <li>Je komt nu in het overzicht van alle webformulieren die aan deze kandidaat zijn gekoppeld.</li>
+                <li>Zoek het formulier dat je opnieuw wilt versturen, bijvoorbeeld <span class="highlight">Registratieformulier - flexwerker</span>.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title-alt">📤 Stap 4: Verstuur het formulier opnieuw</h2>
+
+        <div class="step-container">
+            <div class="step-number">1</div>
+            <h3>Opnieuw verzenden activeren</h3>
+            <h4>🎯 Doel</h4>
+            <p>Het proces starten om het formulier opnieuw naar de kandidaat te versturen.</p>
+            
+            <h4>📝 Acties</h4>
+            <ul>
+                <li>Klik op de <span class="highlight">drie verticale puntjes (⋮)</span> aan de rechterkant naast het formulier dat je opnieuw wilt versturen.</li>
+                <li>Er verschijnt een menu met opties. Kies de optie <span class="highlight">Opnieuw verzenden</span>.</li>
+                <li>Het formulier wordt nu opnieuw verstuurd naar het e-mailadres van de kandidaat dat in zijn of haar profiel is geregistreerd.</li>
+            </ul>
+            
+            <div class="screenshot-placeholder">
+                <img src="Voorbeelden/formulier opnieuw verzenden.png" alt="Formulier opnieuw verzenden">
+                <div class="screenshot-description">
+                    Het contextmenu met de optie 'Opnieuw verzenden' na het klikken op de drie verticale puntjes.
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title-alt">✅ Stap 5: Controleer of het formulier verzonden is</h2>
+
+        <div class="step-container">
+            <div class="step-number">1</div>
+            <h3>Status verificatie</h3>
+            <h4>🎯 Doel</h4>
+            <p>Bevestigen dat het formulier succesvol opnieuw is verzonden.</p>
+            
+            <h4>📝 Acties</h4>
+            <ul>
+                <li>Controleer in de kolom <span class="highlight">Status</span> of de status is bijgewerkt naar <span class="highlight">Opnieuw verzonden</span>.</li>
+                <li>In de kolom <span class="highlight">Laatste gewijzigd</span> kun je ook de datum en tijd zien waarop het formulier opnieuw verzonden is.</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <strong>Resultaat:</strong> De kandidaat ontvangt nu het registratieformulier in zijn of haar e-mail. Zorg ervoor dat de contactinformatie van de kandidaat correct is om te voorkomen dat het formulier niet aankomt.
+        </div>
+
+        <div class="warning-box">
+            <strong>Belangrijke tips:</strong>
+            <ul>
+                <li>Heeft de kandidaat nog steeds geen formulier ontvangen? Controleer dan de instellingen van het formulier of neem contact op met de systeembeheerder.</li>
+                <li>Soms moet je een actief formulier ook blokkeren, voordat je een formulier opnieuw op kan sturen.</li>
+                <li>Controleer altijd het e-mailadres van de kandidaat voordat je het formulier verstuurt.</li>
+                <li>Houd de status van formulieren in de gaten om de voortgang te monitoren.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Quiz Sectie -->
+    <section id="quiz-section">
+        <h2>🎯 Toets je Kennis</h2>
+        <div id="quiz-1" class="quiz active">
+            <div class="question">Waar vind je het menu om webformulieren te beheren?</div>
+            <div class="options">
+                <button onclick="handleQuizAnswer(this, true)">In de rechterbovenhoek van het kandidaatprofiel, via het tandwielicoon (⚙️) en dan 'Web Formulieren'.</button>
+                <button onclick="handleQuizAnswer(this, false)">In het hoofdmenu onder 'Formulieren' en dan 'Webformulieren beheer'.</button>
+            </div>
+            <div id="feedback-quiz-1" class="feedback"></div>
+            <div class="navigation">
+                <button onclick="nextQuiz(2)">Volgende Vraag</button>
+            </div>
+        </div>
+
+        <div id="quiz-2" class="quiz">
+            <div class="question">Hoe verstuur je een formulier opnieuw naar een kandidaat?</div>
+            <div class="options">
+                <button onclick="handleQuizAnswer(this, false)">Door een nieuw formulier aan te maken en dit naar de kandidaat te sturen.</button>
+                <button onclick="handleQuizAnswer(this, true)">Door op de drie verticale puntjes (⋮) naast het formulier te klikken en 'Opnieuw verzenden' te kiezen.</button>
+            </div>
+            <div id="feedback-quiz-2" class="feedback"></div>
+            <div class="navigation">
+                <button onclick="prevQuiz(1)">Vorige Vraag</button>
+                <button onclick="nextQuiz(3)">Volgende Vraag</button>
+            </div>
+        </div>
+        
+        <div id="quiz-3" class="quiz">
+            <div class="question">Hoe controleer je of een formulier succesvol opnieuw is verzonden?</div>
+            <div class="options">
+                <button onclick="handleQuizAnswer(this, true)">Door te kijken naar de kolom 'Status' die 'Opnieuw verzonden' toont en de 'Laatste gewijzigd' datum.</button>
+                <button onclick="handleQuizAnswer(this, false)">Door de kandidaat te bellen om te vragen of het formulier is aangekomen.</button>
+            </div>
+            <div id="feedback-quiz-3" class="feedback"></div>
+            <div class="navigation">
+                <button onclick="prevQuiz(2)">Vorige Vraag</button>
+                <button onclick="nextQuiz(4)">Volgende Vraag</button>
+            </div>
+        </div>
+
+        <div id="quiz-4" class="quiz">
+            <div class="question">Wat moet je soms doen voordat je een formulier opnieuw kunt versturen?</div>
+            <div class="options">
+                <button onclick="handleQuizAnswer(this, false)">Het kandidaatprofiel opnieuw aanmaken in het systeem.</button>
+                <button onclick="handleQuizAnswer(this, true)">Een actief formulier blokkeren voordat je het opnieuw kunt versturen.</button>
+            </div>
+            <div id="feedback-quiz-4" class="feedback"></div>
+            <div class="navigation">
+                <button onclick="prevQuiz(3)">Vorige Vraag</button>
+                <button onclick="showResults()">Resultaat Tonen</button>
+            </div>
+        </div>
+
+        <div id="quiz-results" class="quiz">
+            <div class="results-section">
+                <h2>🏆 Resultaten</h2>
+                <p id="result-text"></p>
+                <div class="navigation">
+                    <button onclick="restartQuiz()">Opnieuw Proberen</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    let correctAnswers = 0;
+    const totalQuestions = 4;
+
+    function handleQuizAnswer(button, correct) {
+        const parent = button.parentElement;
+        const feedback = parent.nextElementSibling;
+
+        parent.querySelectorAll('button').forEach(btn => btn.disabled = true);
+
+        if (correct) {
+            correctAnswers++;
+            button.classList.add('correct');
+            feedback.textContent = 'Goed 🎉';
+            feedback.className = 'feedback good';
+        } else {
+            button.classList.add('wrong');
+            feedback.textContent = 'Fout 🚫';
+            feedback.className = 'feedback wrong';
+        }
+    }
+
+    function navigateToQuiz(quizIdToShow) {
+        document.querySelectorAll('.quiz').forEach(quizDiv => {
+            quizDiv.classList.remove('active');
+        });
+        const targetQuiz = document.getElementById(quizIdToShow);
+        if (targetQuiz) {
+            targetQuiz.classList.add('active');
+        }
+    }
+
+    function nextQuiz(quizNumber) {
+        navigateToQuiz(`quiz-${quizNumber}`);
+    }
+
+    function prevQuiz(quizNumber) {
+        navigateToQuiz(`quiz-${quizNumber}`);
+    }
+
+    function showResults() {
+        const percentage = totalQuestions > 0 ? ((correctAnswers / totalQuestions) * 100).toFixed(0) : 0;
+        document.getElementById('result-text').textContent = `Je hebt ${correctAnswers} van de ${totalQuestions} vragen goed beantwoord (${percentage}%).`;
+        navigateToQuiz('quiz-results');
+    }
+
+    function restartQuiz() {
+        correctAnswers = 0;
+        document.querySelectorAll('.options button').forEach(btn => {
+            btn.disabled = false;
+            btn.classList.remove('correct', 'wrong');
+        });
+        document.querySelectorAll('.feedback').forEach(fb => {
+            fb.textContent = '';
+            fb.className = 'feedback';
+        });
+        navigateToQuiz('quiz-1');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        navigateToQuiz('quiz-1');
+    });
+</script>
+
+</body>
+</html>
